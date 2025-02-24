@@ -1,0 +1,147 @@
+/* Стили для бокового меню навигации */
+
+/* Боковая панель навигации */
+.side-nav {
+  height: 100%;
+  width: 60px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: var(--background-main);
+  overflow-x: hidden;
+  transition: 0.3s;
+}
+
+/* Шапка навигации */
+.nav-header {
+  padding: 20px;
+}
+
+/* Контейнер логотипа */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Текст логотипа */
+.logo-text {
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: none;
+}
+
+/* Иконка проигрывания */
+.play-icon {
+  height: 24px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: none;
+}
+
+/* Кнопки бургер-меню */
+.burger-btn,
+.burger-btn-open {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Кнопка открытия меню */
+.burger-btn-open {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  display: none;
+}
+
+/* Иконка бургер-меню */
+.burger-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Основной контент навигации */
+.nav-content {
+  padding: 20px;
+}
+
+/* Элемент навигации */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+}
+
+/* Иконка пункта меню */
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Текст пункта меню */
+span {
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: none;
+}
+
+/* Дополнительный текст */
+.sub-text {
+  font-size: 14px;
+  color: #666;
+  position: absolute;
+  top: 35px;
+  left: 39px;
+}
+
+/* Стили для открытого меню */
+.nav-open {
+  width: 250px !important;
+}
+
+/* Показ элементов при открытом меню */
+.nav-open .logo-text,
+.nav-open .play-icon,
+.nav-open span {
+  opacity: 1;
+  display: inline;
+}
+
+/* Анимация основного контента */
+#main-content {
+  transition: margin-left 0.3s;
+}
+
+/* Кнопка выхода */
+.logout-btn {
+    color: var(--text-main);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+}
+
+.logout-btn:hover, .nav-item:hover {
+    color: var(--accent);
+}
+
+/* Иконка выхода */
+.logout-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}

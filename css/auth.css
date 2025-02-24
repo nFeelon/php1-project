@@ -1,0 +1,307 @@
+/* Стили для страниц авторизации и регистрации */
+
+/* Контейнер формы */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 40px);
+  padding: 20px;
+}
+
+/* Форма авторизации/регистрации */
+.auth-form {
+  background-color: var(--background-main);
+  padding: 30px 50px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+/* Кнопка возврата */
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+/* Приветственный текст */
+.welcome-text {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+}
+
+/* Заголовок формы */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+/* Разметка формы */
+form {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Группа полей ввода */
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+  min-height: 85px;
+  width: 100%;
+}
+
+/* Подписи к полям */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+/* Обертка для поля ввода и валидации */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Поле ввода */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: var(--background-secondary);
+  color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+/* Плейсхолдер в поле ввода */
+.form-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Состояние фокуса */
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Состояния валидации */
+.form-input.valid {
+  border-color: var(--success);
+}
+
+.form-input.invalid {
+  border-color: var(--error);
+}
+
+/* Сообщение об ошибке */
+.validation-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: var(--error);
+  font-size: 12px;
+  min-height: 16px;
+  padding-left: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.validation-message:not(:empty) {
+  opacity: 1;
+}
+
+/* Список требований к полю */
+.validation-requirements {
+  display: none;
+  position: absolute;
+  right: -220px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--background-secondary);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  list-style: none;
+  margin: 0;
+  z-index: 1000;
+}
+
+/* Элементы списка требований */
+.validation-requirements li {
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Иконки статуса требований */
+.validation-requirements li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--error);
+}
+
+.validation-requirements li.valid {
+  color: var(--text-main);
+}
+
+.validation-requirements li.valid::before {
+  content: "✓";
+  color: var(--success);
+}
+
+/* Чекбокс */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+
+/* Основная кнопка */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: var(--accent-gradient);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Выбор типа аккаунта */
+.account-type {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--text-secondary);
+  border-radius: 5px;
+  background: none;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.type-btn.active {
+  background-color: var(--background-secondary);
+  border-color: var(--text-main);
+}
+
+/* Ссылки под формой */
+.auth-links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-links a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.auth-links a:hover {
+  opacity: 0.8;
+}
+
+/* Кнопки социальных сетей */
+.social-login {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-google,
+.btn-apple {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--text-secondary);
+  border-radius: 5px;
+  background: none;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btn-google img,
+.btn-apple img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Требования к паролю */
+.password-requirements {
+  position: absolute;
+  right: -220px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--background-secondary);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 12px;
+  color: var(--text-main);
+  z-index: 1000;
+  display: none;
+}
+
+/* Показ требований к паролю при фокусе */
+.form-input[data-tooltip-html]:focus ~ .password-requirements,
+.form-input[data-tooltip-html]:hover ~ .password-requirements {
+  display: block;
+}
+
+/* Элементы списка требований к паролю */
+.password-requirements li {
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Иконки статуса требований к паролю */
+.password-requirements li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: var(--error);
+}
+
+.password-requirements li.valid {
+  color: var(--text-main);
+}
+
+.password-requirements li.valid::before {
+  content: "✓";
+  color: var(--success);
+}

@@ -1,0 +1,20 @@
+body {
+    background-color: var(--background-main);
+    color: var(--text-main);
+}
+
+a {
+    color: var(--text-main);
+}
+
+#main-content {
+    margin-left: 60px; /* Initial margin to match collapsed navbar width + padding */
+    border-radius: 30px;
+    background-color: var(--background-secondary);
+    transition: margin-left 0.3s;
+    padding: 20px;
+}
+
+#main-content.content-shifted {
+    margin-left: 250px; /* Width of expanded navbar (250px) + padding */
+}
