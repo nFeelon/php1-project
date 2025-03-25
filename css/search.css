@@ -1,0 +1,308 @@
+/**
+ * Стили для компонентов поиска и страницы результатов поиска
+ */
+
+.search-header {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin-left: 60px;
+}
+
+.search-header .container {
+    background-color: #1a1a1a !important; /* Непрозрачный фон для контейнера */
+    padding: 0 15px;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.search-input-wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    background-color: var(--background-secondary);
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-button {
+    background-color: var(--accent);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: var(--accent);
+    opacity: 0.9;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* Стили для истории поиска */
+.search-history-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-secondary);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: none;
+}
+
+.search-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-history-header span {
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+#clear-history-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+#clear-history-btn:hover {
+    text-decoration: underline;
+}
+
+#search-history-list {
+    list-style: none;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.history-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color-light);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item:hover {
+    background-color: var(--background-hover);
+}
+
+.search-history-query {
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+}
+
+.search-history-query svg {
+    margin-right: 10px;
+    opacity: 0.7;
+}
+
+.no-history {
+    padding: 15px;
+    color: var(--text-secondary);
+    text-align: center;
+    font-style: italic;
+}
+
+/* Стили для результатов поиска */
+.search-results-header {
+    margin-bottom: 20px;
+}
+
+.search-results-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.search-results-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.results-count {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-right: 15px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+.no-results {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+}
+
+/* Стили для фильтров поиска */
+.search-filters-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.filters-button {
+    background-color: var(--background-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.filters-button:hover {
+    background-color: var(--background-hover);
+}
+
+.filters-button svg {
+    transition: transform 0.3s ease;
+}
+
+.filters-button.active svg {
+    transform: rotate(180deg);
+}
+
+.filters-content {
+    display: none;
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.filters-content.active {
+    display: block;
+}
+
+.filters-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-item {
+    background-color: var(--background-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-item:hover {
+    background-color: var(--background-hover);
+}
+
+.filter-item.active {
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.search-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .search-container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    #search-input {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .search-button {
+        padding: 8px 12px;
+    }
+    
+    .search-results-info {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .sort-container {
+        width: 100%;
+    }
+    
+    .search-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .filters-content {
+        padding: 10px;
+    }
+    
+    .filters-list {
+        gap: 8px;
+    }
+    
+    .filter-item {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}

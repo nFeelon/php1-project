@@ -1,0 +1,303 @@
+/* Основной контейнер видео */
+.video-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Плеер */
+.video-player {
+    width: 100%;
+    aspect-ratio: 16/9;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--background-main);
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Информация о видео */
+.video-info {
+    margin-bottom: 30px;
+    background-color: var(--background-main);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.video-header {
+    margin-bottom: 20px;
+}
+
+.video-header h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Статистика видео */
+.video-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.video-stats .views {
+    font-weight: 500;
+}
+
+.dot {
+    color: var(--text-secondary);
+}
+
+.stats-main {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.stats-main .views {
+    font-weight: 500;
+}
+
+.stats-main .date::before {
+    content: "•";
+    margin-right: 15px;
+}
+
+.stats-details {
+    display: flex;
+    gap: 30px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--background-btn-main);
+}
+
+.stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stats-count {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.stats-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+/* Информация о канале */
+.channel-info {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--background-btn-main);
+    align-items: flex-start;
+}
+
+.channel-link {
+    display: flex;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-main);
+    flex-grow: 1;
+}
+
+.channel-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.channel-details {
+    flex-grow: 1;
+}
+
+.channel-details h3 {
+    margin: 0;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.channel-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.subscribers {
+    font-weight: 500;
+}
+
+.channel-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Действия с видео */
+.video-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.likes {
+    display: flex;
+    gap: 10px;
+}
+
+.video-actions button,
+.video-actions .action-btn {
+    padding: 8px 15px;
+    background-color: var(--background-btn-main);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.video-actions button:hover,
+.video-actions .action-btn:hover {
+    background-color: var(--background-btn-reverse);
+    color: var(--text-reverse);
+}
+
+.like-btn span,
+.dislike-btn span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Стили для активных кнопок лайков/дислайков */
+.like-btn.active {
+    background-color: var(--accent);
+    color: var(--text-reverse);
+}
+
+.dislike-btn.active {
+    background-color: var(--error);
+    color: var(--text-reverse);
+}
+
+/* Анимация загрузки для кнопок */
+.like-btn.loading,
+.dislike-btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Иконки для кнопок лайков/дислайков */
+.like-btn::before {
+    content: "👍";
+    margin-right: 5px;
+}
+
+.dislike-btn::before {
+    content: "👎";
+    margin-right: 5px;
+}
+
+/* Описание видео */
+.video-description {
+    background-color: var(--background-main);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.video-description p {
+    margin: 0 0 15px 0;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.links a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.links a:hover {
+    opacity: 0.8;
+}
+
+/* Блок для неавторизованных пользователей */
+.login-to-comment {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--background-btn-main);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.login-to-comment a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.login-to-comment a:hover {
+    opacity: 0.8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .video-container {
+        padding: 10px;
+    }
+
+    .stats-details {
+        gap: 15px;
+    }
+
+    .stats-item {
+        flex: 1;
+    }
+
+    .channel-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .channel-avatar {
+        margin: 0 auto;
+    }
+
+    .channel-stats {
+        justify-content: center;
+    }
+
+    .video-info {
+        padding: 15px;
+    }
+}

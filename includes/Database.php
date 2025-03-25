@@ -1,7 +1,4 @@
 <?php
-/**
- * Класс для работы с базой данных
- */
 class Database {
     private $conn;
     private static $instance = null;

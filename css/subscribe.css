@@ -1,0 +1,59 @@
+/* Стили для кнопки подписки */
+.subscribe-btn {
+    color: var(--text-main);
+    background-color: var(--background-btn-main);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.subscribe-btn:hover {
+    background-color: #2a5cd9;
+}
+
+.subscribe-btn.subscribed {
+    background-color: var(--background-btn-main);
+    color: var(--text-main);
+}
+
+.subscribe-btn.subscribed:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Стили для уведомлений */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.notification {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.error {
+    background-color: #F44336;
+}
+
+.notification.info {
+    background-color: #2196F3;
+}

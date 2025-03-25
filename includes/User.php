@@ -1,25 +1,26 @@
 <?php
 require_once 'Database.php';
 
-/**
- * Класс для работы с пользователями
- */
-class User {
+class User
+{
     private $db;
 
-    public function __construct() {
-        $this->db = Database::getInstance()->getConnection();
+    public function __construct()
+    {
+        global $db;
+        if (isset($db)) {
+            $this->db = $db;
+        } else {
+            $this->db = Database::getInstance()->getConnection();
+        }
     }
 
-    /**
-     * Регистрация нового пользователя
-     */
-    public function register($username, $email, $password) {
+    public function register($username, $email, $password)
+    {
         try {
-            // Проверка существования пользователя
             $stmt = $this->db->prepare("SELECT user_id FROM users WHERE email = ? OR username = ?");
             $stmt->execute([$email, $username]);
-            
+
             if ($stmt->rowCount() > 0) {
                 return [
                     'success' => false,
@@ -27,10 +28,8 @@ class User {
                 ];
             }
 
-            // Хеширование пароля
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-            // Добавление пользователя
             $stmt = $this->db->prepare(
                 "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)"
             );
@@ -49,13 +48,11 @@ class User {
         }
     }
 
-    /**
-     * Авторизация пользователя
-     */
-    public function login($email, $password, $remember = false) {
+    public function login($email, $password, $remember = false)
+    {
         try {
             $stmt = $this->db->prepare(
-                "SELECT user_id, username, password_hash 
+                "SELECT user_id, username, display_name, password_hash 
                  FROM users 
                  WHERE email = ? AND is_active = TRUE"
             );
@@ -63,26 +60,22 @@ class User {
             $user = $stmt->fetch();
 
             if ($user && password_verify($password, $user['password_hash'])) {
-                // Обновляем время последнего входа
                 $this->updateLastLogin($user['user_id']);
-                
-                // Создаем сессию
+
                 session_start();
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['display_name'] = $user['display_name'] ?? $user['username'];
 
-                // Если выбрано "Запомнить меня"
                 if ($remember) {
                     $token = bin2hex(random_bytes(32));
                     $expires = date('Y-m-d H:i:s', strtotime('+30 days'));
-                    
+
                     $stmt = $this->db->prepare(
                         "INSERT INTO remember_tokens (user_id, token, expires_at) 
                          VALUES (?, ?, ?)"
                     );
                     $stmt->execute([$user['user_id'], $token, $expires]);
-                    
-                    // Устанавливаем куки на 30 дней
                     setcookie('remember_token', $token, time() + (86400 * 30), '/', '', true, true);
                 }
 
@@ -108,13 +101,11 @@ class User {
         }
     }
 
-    /**
-     * Проверка авторизации по токену
-     */
-    public function checkRememberToken($token) {
+    public function checkRememberToken($token)
+    {
         try {
             $stmt = $this->db->prepare(
-                "SELECT u.user_id, u.username 
+                "SELECT u.user_id, u.username, u.display_name 
                  FROM users u 
                  JOIN remember_tokens rt ON u.user_id = rt.user_id 
                  WHERE rt.token = ? AND rt.expires_at > NOW()"
@@ -126,32 +117,26 @@ class User {
         }
     }
 
-    /**
-     * Выход пользователя
-     */
-    public function logout() {
+    public function logout()
+    {
         try {
-            // Удаляем токен из БД если есть
             if (isset($_COOKIE['remember_token'])) {
                 $stmt = $this->db->prepare("DELETE FROM remember_tokens WHERE token = ?");
                 $stmt->execute([$_COOKIE['remember_token']]);
-                
-                // Удаляем куки
+
                 setcookie('remember_token', '', time() - 3600, '/');
             }
 
-            // Проверяем статус сессии
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
 
-            // Очищаем и удаляем сессию
             $_SESSION = array();
             if (isset($_COOKIE[session_name()])) {
                 setcookie(session_name(), '', time() - 3600, '/');
             }
             session_destroy();
-            
+
             return [
                 'success' => true,
                 'message' => 'Выход выполнен успешно'
@@ -164,10 +149,8 @@ class User {
         }
     }
 
-    /**
-     * Обновление времени последнего входа
-     */
-    private function updateLastLogin($userId) {
+    private function updateLastLogin($userId)
+    {
         $stmt = $this->db->prepare(
             "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE user_id = ?"
         );

@@ -17,6 +17,8 @@
   width: 100%;
   max-width: 400px;
   position: relative;
+  will-change: transform; /* Оптимизация анимаций */
+  transform: translateZ(0); /* Включаем аппаратное ускорение */
 }
 
 /* Кнопка возврата */
@@ -26,6 +28,12 @@
   left: 30px;
   text-decoration: none;
   font-size: 24px;
+  transition: transform 0.2s ease;
+  transform: translateZ(0); /* Включаем аппаратное ускорение */
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
 }
 
 /* Приветственный текст */
@@ -47,6 +55,7 @@ form {
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
+  position: relative;
 }
 
 /* Группа полей ввода */
@@ -78,12 +87,15 @@ form {
   border-radius: 5px;
   background-color: var(--background-secondary);
   color: var(--text-main);
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease;
+  will-change: border-color; /* Оптимизация анимаций */
+  box-sizing: border-box; /* Важно для правильного расчета ширины */
 }
 
 /* Плейсхолдер в поле ввода */
 .form-input::placeholder {
   color: var(--text-secondary);
+  opacity: 0.7;
 }
 
 /* Состояние фокуса */
@@ -111,7 +123,8 @@ form {
   min-height: 16px;
   padding-left: 12px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
+  pointer-events: none; /* Оптимизация событий */
 }
 
 .validation-message:not(:empty) {
@@ -122,7 +135,7 @@ form {
 .validation-requirements {
   display: none;
   position: absolute;
-  right: -220px;
+  left: calc(100% + 20px); /* Смещаем вправо от поля ввода */
   top: 50%;
   transform: translateY(-50%);
   background: var(--background-secondary);
@@ -184,7 +197,13 @@ form {
   font-weight: bold;
   cursor: pointer;
   margin: 20px 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  will-change: opacity, transform; /* Оптимизация анимаций */
+  transform: translateZ(0); /* Включаем аппаратное ускорение */
+}
+
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary:disabled {
@@ -192,116 +211,38 @@ form {
   cursor: not-allowed;
 }
 
-/* Выбор типа аккаунта */
-.account-type {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.type-btn {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid var(--text-secondary);
-  border-radius: 5px;
-  background: none;
-  color: var(--text-main);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.type-btn.active {
-  background-color: var(--background-secondary);
-  border-color: var(--text-main);
-}
-
 /* Ссылки под формой */
 .auth-links {
   text-align: center;
-  margin-top: 20px;
 }
 
 .auth-links a {
   color: var(--accent);
   text-decoration: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .auth-links a:hover {
   opacity: 0.8;
 }
 
-/* Кнопки социальных сетей */
-.social-login {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+/* Адаптивность */
+@media (max-width: 768px) {
+  .auth-form {
+    padding: 20px 30px;
+  }
+
+  .validation-requirements {
+    display: none !important; /* Отключаем на мобильных */
+  }
 }
 
-.btn-google,
-.btn-apple {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid var(--text-secondary);
-  border-radius: 5px;
-  background: none;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-}
+@media (max-width: 480px) {
+  .auth-form {
+    padding: 15px 20px;
+  }
 
-.btn-google img,
-.btn-apple img {
-  width: 20px;
-  height: 20px;
-}
-
-/* Требования к паролю */
-.password-requirements {
-  position: absolute;
-  right: -220px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--background-secondary);
-  padding: 10px;
-  border-radius: 5px;
-  width: 200px;
-  font-size: 12px;
-  color: var(--text-main);
-  z-index: 1000;
-  display: none;
-}
-
-/* Показ требований к паролю при фокусе */
-.form-input[data-tooltip-html]:focus ~ .password-requirements,
-.form-input[data-tooltip-html]:hover ~ .password-requirements {
-  display: block;
-}
-
-/* Элементы списка требований к паролю */
-.password-requirements li {
-  margin-bottom: 5px;
-  color: var(--text-secondary);
-  position: relative;
-  padding-left: 20px;
-}
-
-/* Иконки статуса требований к паролю */
-.password-requirements li::before {
-  content: "✕";
-  position: absolute;
-  left: 0;
-  color: var(--error);
-}
-
-.password-requirements li.valid {
-  color: var(--text-main);
-}
-
-.password-requirements li.valid::before {
-  content: "✓";
-  color: var(--success);
+  form {
+    max-width: 100%;
+  }
 }

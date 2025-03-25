@@ -1,0 +1,345 @@
+/* Стили для страницы канала */
+
+/* Шапка канала */
+.channel-header {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.channel-banner {
+    width: 100%;
+    height: 200px;
+    background-color: var(--background-btn-main);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.channel-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.channel-banner-default {
+    background: var(--accent-gradient);
+}
+
+.channel-info-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: -40px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.channel-avatar-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--background-secondary);
+    background-color: var(--background-btn-main);
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.channel-avatar-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.channel-details {
+    flex-grow: 1;
+    padding-top: 40px;
+}
+
+.channel-name-large {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.channel-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Навигация канала */
+.channel-nav {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+}
+
+.channel-nav::-webkit-scrollbar {
+    display: none; /* Chrome, Safari и Opera */
+}
+
+.channel-nav-item {
+    padding: 15px 20px;
+    margin-right: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.channel-nav-item:hover {
+    color: var(--text-main);
+}
+
+.channel-nav-item.active {
+    color: var(--text-main);
+    border-bottom-color: var(--accent);
+}
+
+/* Разделы канала */
+.channel-section {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: none;
+}
+
+/* Заголовки разделов */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Трейлер канала */
+.channel-trailer {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.trailer-header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.trailer-container {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.trailer-video {
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.trailer-video video {
+    width: 100%;
+    border-radius: var(--border-radius);
+    aspect-ratio: 16/9;
+}
+
+.trailer-info {
+    flex: 1;
+}
+
+.trailer-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.trailer-views {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.trailer-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.trailer-description {
+    color: var(--text-main);
+    font-size: 14px;
+    line-height: 1.5;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+/* О канале */
+.about-content {
+    padding: 0;
+}
+
+.channel-description {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+
+.social-links h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.social-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links-list li {
+    margin-bottom: 10px;
+}
+
+.social-links-list a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.social-links-list a:hover {
+    text-decoration: underline;
+}
+
+/* Подписки */
+.subscriptions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.subscription-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.subscription-card:hover {
+    transform: translateY(-5px);
+}
+
+.subscription-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.subscription-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subscription-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.subscription-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.subscription-stats {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Пустое состояние */
+.empty-videos,
+.empty-playlists,
+.empty-about {
+    text-align: center;
+    padding: 50px 0;
+    color: var(--text-secondary);
+}
+
+.empty-videos p,
+.empty-playlists p,
+.empty-about p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .channel-info-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .channel-info {
+        text-align: center;
+    }
+    
+    .channel-stats {
+        justify-content: center;
+    }
+    
+    .channel-actions {
+        margin-top: 15px;
+        justify-content: center;
+    }
+    
+    .channel-nav {
+        justify-content: flex-start;
+    }
+    
+    .channel-nav-item {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .channel-banner {
+        height: 150px;
+    }
+    
+    .channel-avatar-large {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .channel-name {
+        font-size: 20px;
+    }
+    
+    .channel-nav-item {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+}
